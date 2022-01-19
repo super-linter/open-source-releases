@@ -33,7 +33,7 @@ jobs:
       - name: Run Repolinter
         uses: todogroup/repolinter-action@v1
         with:
-          repository: ${{ jobs.find-repo-to-act-on.outputs.REPO }}
+          repository: ${{ needs.find-repo-to-act-on.outputs.REPO }}
           username: zkoppert
           token: ${{ secrets.MY_TOKEN }}
           # TODO: Add remote ruleset to customize repo linting checks per https://github.com/github/ospo-in-a-box/issues/29
