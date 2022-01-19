@@ -6,14 +6,17 @@ on:
 
 jobs:
   find-repo-to-act-on:
+    outputs:
+      REPO: ${{ steps.find-repo.outputs.REPO }}
     # Temporary filter for testing to only zkoppert issues
     if: >-
       github.event.issue.user.login == 'zkoppert'
     runs-on: ubuntu-latest
     steps:
       # TODO: find repository from the issue instead of hardcode
-    - run: |
-        echo "REPO=github/super-linter" >> $GITHUB_ENV
+    - id: find-repo
+      run: |
+        echo "::set-output name=REPO::github/super-linter"
 
   apply-repolinter:
     # Temporary filter for testing to only zkoppert issues
@@ -25,13 +28,13 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v2
         with:
-          repository: ${{ env.REPO }}
+          repository: ${{ jobs.find-repo-to-act-on.outputs.REPO }}
       
       - name: Run Repolinter
         uses: todogroup/repolinter-action@v1
         with:
-          repository: ${{ env.REPO }}
-          username: my-token-username
+          repository: ${{ jobs.find-repo-to-act-on.outputs.REPO }}
+          username: zkoppert
           token: ${{ secrets.MY_TOKEN }}
           # TODO: Add remote ruleset to customize repo linting checks per https://github.com/github/ospo-in-a-box/issues/29
           # with:
