@@ -28,7 +28,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v2
         with:
-          repository: ${{ jobs.find-repo-to-act-on.outputs.REPO }}
+          repository: ${{ needs.find-repo-to-act-on.outputs.REPO }}
       
       - name: Run Repolinter
         uses: todogroup/repolinter-action@v1
