@@ -27,8 +27,6 @@ jobs:
     steps:
       - name: Checkout open-source-releases repo
         uses: actions/checkout@v2
-        with:
-          path: main
       - name: Checkout target repo
         uses: actions/checkout@v2
         with:
