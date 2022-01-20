@@ -31,7 +31,9 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: ${{ needs.find-repo-to-act-on.outputs.REPO }}
-      
+      - name: debug
+        run: | 
+          ls -la .; find ./* | grep repolinter-ruleset.json
       - name: Run Repolinter
         uses: todogroup/repolinter-action@v1
         with:
