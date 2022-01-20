@@ -37,7 +37,7 @@ jobs:
           username: zkoppert
           token: ${{ secrets.MY_TOKEN }}
           # TODO: Configure remote ruleset to customize repo linting checks per https://github.com/github/ospo-in-a-box/issues/29
-          config_url: https://raw.githubusercontent.com/super-linter/open-source-releases/main/repolinter-ruleset.json
+          config: 'repolinter-ruleset.json'
   
   report-results:
     # Temporary filter for testing to only zkoppert issues
