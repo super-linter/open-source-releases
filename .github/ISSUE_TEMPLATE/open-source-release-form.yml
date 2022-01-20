@@ -1,0 +1,77 @@
+name: OSS Report
+description: File an open source release 
+title: "Open Source: [github.com/org/project]"
+body:
+- type: markdown
+  attributes:
+    value: |
+        Thanks for taking the time to fill out this open source release form! Please answer all questions in this form to the best of your ability. Questions? Ping us in the #open-source Slack channel.        
+         
+         🛑 You do not need to fill out this open source releases issue if: 
+          * The project is considered a [product release](https://github.com/github/open-source-releases/tree/ashleywolf-release-form#what-if-this-is-also-a-product-feature-release). Create an issue in `github/releases` and cc: `@open-source` team
+          * You are creating this repository under your personal username (e.g. mikemcquaid/strap) and it's not used by GitHub or related to your work at GitHub
+          
+          🟢 You should fill this issue out if:
+          * You are releasing an open source project related to your work including field service projects.
+          * You are publishing work related open source code under your personal username (e.g. mikemcquaid/strap) or a GitHub-managed organization
+- type: checkboxes
+  attributes:
+    label: Code and Assets 
+    description: Who wrote the code and created the assets? Mark once resolved
+    options:    
+      - label: I/my team wrote all the code in this release and created any images, fonts, documentation, machine learning models, etc.
+      - label: The project includes third-party code or assets. For licensing questions discuss with `github-legal` and [add link to conversation](LINK)
+- type: checkboxes
+  attributes:
+    label: Data and Telemetry
+    description: Are we sending data or telemetry back to GitHub? Mark once resolved
+    options:      
+      - label: The project does not send any data or telemetry back to GitHub. 
+      - label: The project sends data or telemtetry back to GitHub. Discuss with `github/privacy` and [add link to conversation](LINK)
+      - label: The project does not implement cryptography. 
+      - label: The project implements cryptography. Discuss with `github/oss-legal-review` and [add link to conversation](LINK)
+- type: checkboxes
+  attributes:
+    label: Project License
+    description: Mark once resolved
+    options: 
+      - label: The project is MIT licensed. If not, discuss with `github-legal` and [add link to conversation](LINK)
+- type: input
+  attributes:
+    label: Project URL
+    placeholder: github.com/github/project-name
+- type: textarea
+  attributes:
+    label: Project description
+    description: This information helps others understand what the project does
+    value: |
+      ...
+- type: textarea
+  attributes:
+    label: Business case
+    description: Describe the business goals that will help others understand the use case(s) for this project
+    value: |
+      ...      
+- type: input
+  attributes:
+    label: Owning Team
+    description:  "Name of the team that will own/maintain the project."
+    placeholder: "github/c2c-actions"
+- type: checkboxes
+  attributes:
+    label: Prepare Project
+    options:
+      - label: Remove sensitive materials in the revision history, issues, or pull requests.
+      - label: Add [MIT `LICENSE` file](open-source-releases/templates/LICENSE.txt) and [`README.md`](open-source-releases/templates/README.md)
+  attributes:
+    label: Support
+    options:
+      - label: Create a [Service Catalog ownership entry](https://thehub.github.com/engineering/products-and-services/internal/service-catalog/service-ownership/#ownership-snippet)  
+      - label: Follow [best practices for maintainers](https://opensource.guide/best-practices/)  
+      - label: Join the GitHub maintainer community in [open-source discussions](https://github.com/github/open-source/discussions)
+- type: checkboxes
+  attributes:
+    label: Ship It
+    options:
+      - label: Publish your project! Open an issue in [github/security-iam](https://github.com/github/security-iam/issues/new) referencing this github/open-source-releases issue with the request.
+      - label: Share your project! Post in `#open-source`, on your personal social channels, and the GitHub Engineering Blog.
