@@ -16,7 +16,7 @@ jobs:
       # TODO: find repository from the issue instead of hardcode
     - id: find-repo
       run: |
-        echo "::set-output name=REPO::$( ${{ github.event.issue.title }} | sed 's/Open Source: github.com\///g )"
+        echo "::set-output name=REPO::$( ${{ github.event.issue.title }} | sed 's/Open Source: github.com\///g' )"
 
   apply-repolinter:
     # Temporary filter for testing to only zkoppert issues
