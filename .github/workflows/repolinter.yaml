@@ -58,5 +58,5 @@ jobs:
       - name: comment on issue with results
         # TODO: Put results from repo linter into this issue comment
         run: |
-          echo ${{ needs.apply-repolinter.outputs.JSON_OUTPUT }} > output.json;
+          echo ' ${{ needs.apply-repolinter.outputs.JSON_OUTPUT }} ' > output.json;
           gh issue comment $ISSUE --body-file - output.json
