@@ -37,6 +37,7 @@ jobs:
           repository: ${{ needs.find-repo-to-act-on.outputs.REPO }}
           username: zkoppert
           token: ${{ secrets.MY_TOKEN }}
+          output_type: "issue"
           # TODO: Configure remote ruleset to customize repo linting checks per https://github.com/github/ospo-in-a-box/issues/29
           config_url: 'https://raw.githubusercontent.com/super-linter/open-source-releases/main/repolinter-ruleset.json'
   
