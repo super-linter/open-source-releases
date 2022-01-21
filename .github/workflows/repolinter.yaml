@@ -58,4 +58,5 @@ jobs:
       - name: comment on issue with results
         # TODO: Put results from repo linter into this issue comment
         run: |
-          gh issue comment $ISSUE --body-file - < ${{ needs.apply-repolinter.outputs.JSON_OUTPUT }}"
+          echo ${{ needs.apply-repolinter.outputs.JSON_OUTPUT }} > output.json;
+          gh issue comment $ISSUE --body-file - output.json
