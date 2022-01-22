@@ -38,11 +38,13 @@ jobs:
   report-results:
     env:
       ISSUE: ${{ github.event.issue.html_url }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     needs: apply-repolinter
     runs-on: ubuntu-latest
     steps:
       - name: comment on issue with results
         # TODO: Put results from repo linter into this issue comment
         run: |
-          echo '${{ needs.apply-repolinter.outputs.JSON_OUTPUT }}' | jq '{pass: .passed, license: .results[0].lintResult.targets[0].message, README: .results[1].lintResult.targets[0].message, CODEOWNERS: .results[2].lintResult.targets[0].message}' > output.json;
+          # echo '${{ needs.apply-repolinter.outputs.JSON_OUTPUT }}' | jq '{pass: .passed, license: .results[0].lintResult.targets[0].message, README: .results[1].lintResult.targets[0].message, CODEOWNERS: .results[2].lintResult.targets[0].message}' > output.json;
+          echo '${{ needs.apply-repolinter.outputs.JSON_OUTPUT }}' | jq -r '(["Policy","Status", "Message"] | (., map(length*"-"))), (.results[] | [.ruleInfo.name, .status, .lintResult.message]) | @tsv' > output.json;
           gh issue comment $ISSUE --body-file output.json
