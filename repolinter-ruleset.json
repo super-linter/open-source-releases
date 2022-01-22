@@ -3,13 +3,15 @@
     "version": 2,
     "axioms": {},
     "rules": {
-        "license-file-exists": {
+        "license-file-is-MIT": {
             "level": "error",
             "rule": {
-                "type": "file-existence",
+                "type": "file-contents",
                 "options": {
-                    "globsAny": ["LICENSE*", "COPYING*"],
-                    "nocase": true
+                    "globsAll": ["LICENSE*", "COPYING*"],
+                    "nocase": true,
+                    "fail-on-non-existant": true,
+                    "content": "MIT License"
                 }
             },
             "fix": {
@@ -17,11 +19,11 @@
                 "options": {
                     "file": "LICENSE",
                     "replace": true,
-                    "text": { "url": "https://www.apache.org/licenses/LICENSE-2.0.txt" }
+                    "text": { "url": "https://opensource.org/licenses/MIT" }
                 }
             },
-            "policyInfo": "New Relic requires that all open source projects have an associated license contained within the project. This license must be permissive (e.g. non-viral or copyleft), and we recommend Apache 2.0 for most use cases",
-            "policyUrl": "https://docs.google.com/document/d/1vML4aY_czsY0URu2yiP3xLAKYufNrKsc7o4kjuegpDw/edit"
+            "policyInfo": "MIT License is required for code or legal approval for an alternative",
+            "policyUrl": "https://github.com/github/open-source/blob/main/docs/licensing.md#licenses-for-github-open-source-projects"
         },
         "readme-file-exists": {
             "level": "error",
