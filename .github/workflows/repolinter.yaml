@@ -53,6 +53,6 @@ jobs:
         # TODO: Put results from repo linter into this issue comment
         run: |
           echo '${{ needs.apply-repolinter.outputs.JSON_OUTPUT }}' | \
-            jq '{Ran without failure: .passed, license: .results[0].status, message: .results[0].lintResult.targets[0].message, README: .results[1].status, message: .results[1].lintResult.targets[0].message, CODEOWNERS: .results[2].status, message: .results[2].lintResult.targets[0].message}' \
+            jq '{Ran without failure: .passed, LICENSE: .results[0].status, README: .results[1].status, CODEOWNERS: .results[2].status}' \
             > output.json;
           gh issue comment $ISSUE --body-file output.json
