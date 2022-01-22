@@ -8,9 +8,6 @@ jobs:
   find-repo-to-act-on:
     outputs:
       REPO: ${{ steps.find-repo.outputs.REPO }}
-    # Temporary filter for testing to only zkoppert issues
-    if: >-
-      github.event.issue.user.login == 'zkoppert'
     runs-on: ubuntu-latest
     steps:
       # TODO: find repository from the issue instead of hardcode
@@ -23,9 +20,6 @@ jobs:
       PASSED: ${{ steps.run-repolinter.outputs.passed }}
       ERRORED: ${{ steps.run-repolinter.outputs.errored }}
       JSON_OUTPUT: ${{ steps.run-repolinter.outputs.json_output }}
-    # Temporary filter for testing to only zkoppert issues
-    if: >-
-      github.event.issue.user.login == 'zkoppert'
     needs: find-repo-to-act-on
     runs-on: ubuntu-latest
     steps:
@@ -42,9 +36,7 @@ jobs:
           config_url: 'https://raw.githubusercontent.com/super-linter/open-source-releases/main/repolinter-ruleset.json'
   
   report-results:
-    # Temporary filter for testing to only zkoppert issues
     env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       ISSUE: ${{ github.event.issue.html_url }}
     needs: apply-repolinter
     runs-on: ubuntu-latest
