@@ -23,7 +23,7 @@
                 }
             },
             "policyInfo": "MIT License is required for code or legal approval for an alternative",
-            "policyUrl": "https://github.com/github/open-source/blob/main/docs/licensing.md#licenses-for-github-open-source-projects"
+            "policyUrl": "https://github.com/github/open-source/blob/main/policies/release.md"
         },
         "readme-file-exists": {
             "level": "error",
@@ -41,8 +41,27 @@
                     "text": { "url": "https://raw.githubusercontent.com/newrelic/open-source-tools/master/nerdpacks/oss-template/README.md" }
                 }
             },
-            "policyInfo": "New Relic requires a README file in all projects. This README should give a general overview of the project, and should point to additional resources (security, contributing, etc.) where developers and users can learn further",
-            "policyUrl": "https://github.com/newrelic/open-source-tools/tree/master/javascript/oss-template"
+            "policyInfo": "GitHub requires a README file in all projects. This README should give a general overview of the project, and should point to additional resources (security, contributing, etc.) where developers and users can learn further",
+            "policyUrl": "https://github.com/github/open-source/blob/main/policies/release.md"
+        },
+        "codeowners-file-exists": {
+            "level": "error",
+            "rule": {
+                "type": "file-existence",
+                "options": {
+                    "globsAny": ["CODEOWNERS*", "*/CODEOWNERS*"],
+                    "nocase": true
+                }
+            },
+            "fix": {
+                "type": "file-create",
+                "options": {
+                    "file": "CODEOWNERS",
+                    "text": { "url": "https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners" }
+                }
+            },
+            "policyInfo": "GitHub requires a CODEOWNERS file in all projects. This enables GitHub to contact the maintainers in the event it is necessary.",
+            "policyUrl": "https://github.com/github/open-source/blob/main/policies/release.md"
         },
     },
     "formatOptions": {
