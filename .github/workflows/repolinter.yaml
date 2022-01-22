@@ -40,6 +40,7 @@ jobs:
         uses: todogroup/repolinter-action@v1
         with:
           output_type: issue
+          repository: super-linter/open-source-releases
           username: zkoppert
           token: ${{ secrets.MY_TOKEN }}
           # TODO: Configure remote ruleset to customize repo linting checks per https://github.com/github/ospo-in-a-box/issues/29
