@@ -46,5 +46,7 @@ jobs:
         # TODO: Put results from repo linter into this issue comment
         run: |
           # echo '${{ needs.apply-repolinter.outputs.JSON_OUTPUT }}' | jq '{pass: .passed, license: .results[0].lintResult.targets[0].message, README: .results[1].lintResult.targets[0].message, CODEOWNERS: .results[2].lintResult.targets[0].message}' > output.json;
-          echo '${{ needs.apply-repolinter.outputs.JSON_OUTPUT }}' | jq -r '(["Policy |", "Status |", "Message"]), (["-- | -- | --"]),(.results[] | [.ruleInfo.name + " |", .status + " |", .lintResult.message]) | @tsv' > output.json;
-          gh issue comment $ISSUE --body-file output.json
+          echo '${{ needs.apply-repolinter.outputs.JSON_OUTPUT }}' | jq -r '(["Policy |", "Status |", "Message"]), (["-- | -- | --"]),(.results[] | [.ruleInfo.name + " |", .status + " |", .lintResult.message]) | @tsv' > output.md;
+          sed -i 's/PASSED/:white_check_mark: Pass/g' output.md;
+          sed -i 's/NOT_PASSED_WARN/:x: Fail/g' output.md
+          gh issue comment $ISSUE --body-file output.md
